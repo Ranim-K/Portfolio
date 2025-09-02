@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Mileast';
+  src: url('../assets/fonts/Mileast.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root {
+  --bg-light: #fff;
+  --text-light: #000;
+  --border-color: #1E1E1E;
+
+  --bg-dark: #0D0D0F;
+  --bg-dark-alt: #1A1A1D;
+  --text-dark: #F5F5F5;
+  --accent-dark: #6C63FF;
+  --muted-dark: #8B8B96;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background span {
+  width: 1vmin;
+  height: 1vmin;
+  border-radius: 50%;
+  position: absolute;
+  animation: move linear infinite;
+}
+
+body:not(.dark) .background span {
+  background: #1E1E1E;
+}
+
+body.dark .background span {
+  background: var(--muted-dark);
+}
+
+@keyframes move {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.frame {
+  width: 95%;
+  height: 95%;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease;
+}
+
+body.dark .frame {
+  background: var(--bg-dark-alt);
+  border-color: var(--muted-dark);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-family: 'Mileast', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-items div {
+  padding: 5px 0;
+  background: transparent;
+  color: var(--text-light);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+body.dark .nav-items div {
+  color: var(--text-dark);
+}
+
+.nav-items div:hover {
+  color: #555;
+}
+
+#mode-toggle {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s ease;
+  cursor: pointer;
+  color: #1E1E1E;
+}
+
+body.dark #mode-toggle {
+  color: var(--text-dark);
+}
+
+#mode-toggle.rotate {
+  transform: rotate(360deg);
+}
+
+.nav-line {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+}
+
+body.dark .nav-line {
+  background: var(--muted-dark);
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-text {
+  font-size: 4.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #2c2c3a;
+  line-height: 1.3;
+}
+
+.hero-text span {
+  color: #2c2c3a;
+  -webkit-text-stroke: 0;
+}
+
+body.dark .hero-text {
+  -webkit-text-stroke: 1.5px var(--muted-dark);
+}
+
+body.dark .hero-text span {
+  color: var(--text-dark);
+}
+
+.hero-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 40px;
+}
+
+.hero-links a {
+  font-family: 'Mileast', sans-serif;
+  font-size: 1.9rem;
+  color: #1E1E1E;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.hero-links a:hover {
+  color: #555;
+}
+
+body.dark .hero-links a {
+  color: var(--text-dark);
+}
+
+body.dark .hero-links a:hover {
+  color: var(--accent-dark);
+}
+
+.hero-text, 
+.hero-links a {
+  transition: opacity 0.4s ease;
+}
+
+.hero-text.arabic,
+.hero-links.arabic a {
+  font-family: 'Amiri', serif;
+  direction: rtl;
+  text-align: center;
+}
